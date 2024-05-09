@@ -1,4 +1,10 @@
-#!/usr/bin/env python3
+
+if __name__ == "__main__" :
+    # create download directory, if not exist
+    if not os.path.isdir(Config.DOWNLOAD_LOCATION):
+        os.makedirs(Config.DOWNLOAD_LOCATION)
+    plugins = dict(root="plugins")
+    Warrior #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | Modifieded By : @DC4_WARRIOR
 
@@ -22,3 +28,13 @@ if __name__ == "__main__" :
     api_hash=Config.API_HASH,
     plugins=plugins)
     Warrior.run()
+from pyrogram import Client
+
+app = Client("my_session")
+
+@app.on_message()
+async def handle_message(client, message):
+    print(message)
+
+if __name__ == '__main__':
+    app.run()
