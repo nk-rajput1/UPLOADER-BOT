@@ -11,10 +11,24 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 
-if __name__ == "__main__" :
-    # create download directory, if not exist
-    if not os.path.isdir(Config.DOWNLOAD_LOCATION):
-        os.makedirs(Config.DOWNLOAD_LOCATION)
+import os  # Import the os module to work with file system operations
+from pyrogram import Client
+
+# Create a Pyrogram Client instance
+app = Client("my_session")
+
+# Check if DOWNLOAD_LOCATION directory exists
+if not os.path.isdir(Config.DOWNLOAD_LOCATION):
+    os.makedirs(Config.DOWNLOAD_LOCATION)  # Create the directory if it doesn't exist
+
+# Define the message handler
+@app.on_message()
+async def handle_message(client, message):
+    print(message)
+
+# Run the Pyrogram Client
+if __name__ == '__main__':
+    app.run())
     plugins = dict(root="plugins")
     Warrior = Clinton("@BOT_X_BOT",
     bot_token=Config.BOT_TOKEN,
@@ -22,27 +36,3 @@ if __name__ == "__main__" :
     api_hash=Config.API_HASH,
     plugins=plugins)
     Warrior.run()
-from pyrogram import Client
-
-app = Client("my_session")
-
-@app.on_message()
-async def handle_message(client, message):
-    print(message)
-
-if __name__ == '__main__':
-    app.run()import os  # Import the os module to work with file system operations
-from pyrogram import Client
-
-app = Client("my_session")
-
-# Check if DOWNLOAD_LOCATION directory exists
-if not os.path.isdir(Config.DOWNLOAD_LOCATION):
-    os.makedirs(Config.DOWNLOAD_LOCATION)  # Create the directory if it doesn't exist
-
-@app.on_message()
-async def handle_message(client, message):
-    print(message)
-
-if __name__ == '__main__':
-    app.run()
